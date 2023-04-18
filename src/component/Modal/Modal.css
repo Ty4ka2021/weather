@@ -1,0 +1,64 @@
+.Modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: linear-gradient(167.57deg, rgba(46, 51, 90, 0.26) -4.68%, rgba(28, 27, 51, 0.26) 95.45%);
+  box-shadow: inset 0px 1px 0px rgba(216, 215, 215, 0.479);
+  backdrop-filter: blur(25px);
+
+  border-radius: 44px 44px 0 0;
+  height: 324px;
+}
+
+.blind {
+  display: block;
+  margin: 10px;
+  width: 48px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.forecastBtns {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.forecastBtn {
+  color: rgba(235, 235, 245, 0.6);
+  border: transparent;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.forecastBtn.active {
+  position: relative;
+
+}
+
+.forecastBtn.active::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  border-radius: 50%;
+  width: 100%;
+  background: rgb(254, 254, 254);
+  background: linear-gradient(90deg, rgba(254, 254, 254, 0.09567577030812324) 0%, rgba(254, 254, 254, 0.24693627450980393) 15%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.24693627450980393) 85%, rgba(255, 255, 255, 0.0984768907563025) 100%);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  box-shadow: inset 0px 1px 0px rgba(216, 215, 215, 0.479);
+  margin-bottom: 20px;
+}
+
+.forecastList {
+  display: flex;
+}

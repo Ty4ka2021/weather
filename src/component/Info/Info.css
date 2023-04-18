@@ -1,0 +1,26 @@
+@import-normalize;
+@import '~reset-css';
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: auto;
+}
+
+.currentCity {
+  font-size: 34px;
+  line-height: 41px;
+}
+
+.temp {
+  font-weight: 200;
+  font-size: 96px;
+  line-height: 70px;
+}
+
+.desc {
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(235, 235, 245, 0.6);
+}
