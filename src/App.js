@@ -1,20 +1,26 @@
-import './App.css'
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import { getCurrentWeather } from './utils/network'
 
-function App() {
+const App = () => {
 
-  let currentCity = 'Kyiv'
+  const dispatch = useDispatch()
 
-  // fetch('https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=bf35cac91880cb98375230fb443a116f')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data)
-  //   })
+  const data = useSelector(state => state.initialState)
 
+  console.log(data)
+
+  useEffect(() => {
+    const res = getCurrentWeather()
+    dispatch({ type: 'INIT_DATA', payload: res })
+  }, [])
 
   return (
-    <div className="App">
+    <>
+      <div>
 
-    </div>
+      </div>
+    </>
   )
 }
 
