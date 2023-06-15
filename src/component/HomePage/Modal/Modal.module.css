@@ -1,0 +1,23 @@
+.Modal {
+	position: absolute;
+	z-index: 2;
+	bottom: -460px;
+	/* top: 0; */
+	left: 0;
+	backdrop-filter: blur(20px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border-radius: 60px 60px 0 0;
+}
+
+.Modal::before {
+	content: '';
+	width: 48px;
+	height: 5px;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+	position: absolute;
+	top: 10px;
+}

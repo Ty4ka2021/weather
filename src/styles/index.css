@@ -1,0 +1,32 @@
+@import-normalize;
+@import '~reset-css';
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	--color-white: #ffffff;
+	--color-grey: #EBEBF5;
+	--color-blue-300: #2E335A;
+	--color-blue-200: #45278B;
+	--color-blue-100: #7758D1;
+
+}
+
+body {
+	margin: 0 auto;
+	color: var(--color-white);
+	font-size: 15px;
+}
+
+.App {
+	background: linear-gradient(-45deg, var(--color-blue-200), var(--color-blue-300)) no-repeat;
+}
+
+.title {
+	text-transform: uppercase;
+	font-size: 20px;
+}

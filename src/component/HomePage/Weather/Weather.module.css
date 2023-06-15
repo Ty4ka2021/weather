@@ -1,0 +1,28 @@
+.Weather {
+	padding-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.city {
+	font-size: 34px;
+}
+
+.temp {
+	font-size: 96px;
+}
+
+.cloudiness {
+	color: var(--color-grey);
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.tempRange {
+	font-size: 20px;
+}
+
+.tempRange span:first-child {
+	margin-right: 20px;
+}
