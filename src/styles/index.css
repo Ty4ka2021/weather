@@ -9,7 +9,8 @@
 
 :root {
 	--color-white: #ffffff;
-	--color-grey: #EBEBF5;
+	--color-grey: #dddde5;
+	--color-grey-200: #bababa;
 	--color-blue-300: #2E335A;
 	--color-blue-200: #45278B;
 	--color-blue-100: #7758D1;
@@ -26,7 +27,20 @@ body {
 	background: linear-gradient(-45deg, var(--color-blue-200), var(--color-blue-300)) no-repeat;
 }
 
+.detailsItem {
+	padding: 20px;
+	border-radius: 30px;
+	background-color: var(--color-blue-200);
+}
+
 .title {
+	color: var(--color-grey);
 	text-transform: uppercase;
 	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.info {
+	font-size: 24px;
+	margin-bottom: 10px;
 }

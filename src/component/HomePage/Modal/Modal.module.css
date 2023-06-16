@@ -1,7 +1,7 @@
 .Modal {
 	position: absolute;
 	z-index: 2;
-	bottom: -460px;
+	bottom: -840px;
 	/* top: 0; */
 	left: 0;
 	backdrop-filter: blur(20px);

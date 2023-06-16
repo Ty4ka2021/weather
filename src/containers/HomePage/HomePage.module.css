@@ -3,6 +3,10 @@
 	position: relative;
 }
 
+.HomePageHidden {
+	overflow: hidden;
+}
+
 .img {
 	width: 390px;
 	height: 390px;

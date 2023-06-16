@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import Modal from '../../component/HomePage/Modal/Modal'
 import Weather from '../../component/HomePage/Weather/Weather'
 import s from "./HomePage.module.css"
 import homeImg from './img/House.png'
+import classNames from 'classnames'
 
 const HomePage = () => {
+
+	const [modalActive, setModalActive] = useState(true)
+
 	return (
 		<>
 			{/* 
@@ -15,7 +19,7 @@ const HomePage = () => {
 			</div> */}
 
 
-			<div className={s.HomePage}>
+			<div className={classNames(s.HomePage, [modalActive && s.HomePageHidden])}>
 				<img src={homeImg} className={s.img} />
 				<Weather />
 				<Modal />

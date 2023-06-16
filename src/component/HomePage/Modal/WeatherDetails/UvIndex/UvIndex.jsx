@@ -4,9 +4,9 @@ import s from "./UvIndex.module.css"
 
 const UvIndex = () => {
 	return (
-		<div className={s.UvIndex}>
+		<div className={classNames(s.UvIndex, 'detailsItem')}>
 			<h3 className={classNames(s.title, 'title')}>Uv Index</h3>
-			<div className={s.info}>4 Moderate</div>
+			<div className={classNames(s.info, 'info')}>4 Moderate</div>
 			<hr />
 		</div>
 	)

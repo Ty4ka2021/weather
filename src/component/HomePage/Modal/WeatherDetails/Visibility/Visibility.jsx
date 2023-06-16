@@ -4,9 +4,9 @@ import s from "./Visibility.module.css"
 
 const Visibility = () => {
 	return (
-		<div className={s.Visibility}>
+		<div className={classNames(s.Visibility, 'detailsItem')}>
 			<h3 className={classNames(s.title, 'title')}>Visibility</h3>
-			<div className={s.info}>8 km</div>
+			<div className={classNames(s.info, 'info')}>8 km</div>
 			<div className={s.subInfo}>Similar to the actual visibility</div>
 		</div>
 	)

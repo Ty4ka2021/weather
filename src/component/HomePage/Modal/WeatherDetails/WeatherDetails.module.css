@@ -1,0 +1,9 @@
+.WeatherDetails {
+	padding: 0 20px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-column-gap: 14px;
+	grid-row-gap: 10px;
+}
