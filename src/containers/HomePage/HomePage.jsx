@@ -1,18 +1,21 @@
+import classNames from 'classnames'
 import React, { useState } from "react"
 import Modal from '../../component/HomePage/Modal/Modal'
 import Weather from '../../component/HomePage/Weather/Weather'
 import s from "./HomePage.module.css"
 import homeImg from './img/House.png'
-import classNames from 'classnames'
+import TabBar from '../../component/HomePage/TabBar/TabBar'
 
-const HomePage = () => {
+const HomePage = ({ data }) => {
 
 	const [modalActive, setModalActive] = useState(true)
 
+	console.log(data)
+
 	return (
 		<>
-			{/* 
-			<div>
+
+			{/* <div>
 				{data.map(test =>
 					<div>{test.name}</div>
 				)}
@@ -20,8 +23,11 @@ const HomePage = () => {
 
 
 			<div className={classNames(s.HomePage, [modalActive && s.HomePageHidden])}>
-				<img src={homeImg} className={s.img} />
+
+				<TabBar />
+
 				<Weather />
+				<img src={homeImg} className={s.img} />
 				<Modal />
 			</div>
 		</>

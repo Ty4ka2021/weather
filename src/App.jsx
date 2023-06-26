@@ -1,17 +1,32 @@
-import React, { useEffect } from "react"
-import { fetchData } from './store/asynkActions/fetchData'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { WEATHER_API_KEY, WEATHER_API_URL } from './api'
 import HomePage from './containers/HomePage/HomePage'
+import SearchPage from './containers/SearchPage/SearchPage'
+import { addInitDataAction } from './store/reducers/initialReducer'
+import { useDispatch, useSelector } from 'react-redux'
 
 const App = () => {
   const dispatch = useDispatch()
-  const data = useSelector(state => state.initialReducer.data)
+  const [currentWeather, setCurrentWeather] = useState(null)
 
-  useEffect(() => {
-    // dispatch(fetchData())
-    console.log(data)
-  }, [])
+  const state = useSelector(state => state.initialReducer.data[0])
+
+
+  const handleOnSearchChange = (searchData) => {
+    const [lat, lon] = searchData.value.split(" ")
+
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+
+    Promise.all([currentWeatherFetch])
+      .then(async (response) => {
+        const weatherResponse = await response[0].json()
+        setCurrentWeather({ city: searchData.label, ...weatherResponse })
+      })
+      .then(dispatch(addInitDataAction(currentWeather)))
+      .catch((err) => console.log(err))
+  }
+
 
   return (
     <BrowserRouter>
@@ -22,10 +37,11 @@ const App = () => {
 
 
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage data={state} />} />
+          <Route path='/search' element={<SearchPage onSearchChange={handleOnSearchChange} />} />
 
 
-          {/* <Route path='/people' element={<PeoplePage />} />
+          {/* 
         <Route path='/favorites' element={<FavoritesPage />} />
         <Route path='/search' element={<SearchPage />} />
         <Route path='/people/:userId' element={<PersonPage />} />

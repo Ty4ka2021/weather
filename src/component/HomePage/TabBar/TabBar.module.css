@@ -1,0 +1,15 @@
+.TabBar {
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn img {
+	width: 40px;
+	height: 40px;
+}
+
+.city {
+	font-size: 34px;
+}
