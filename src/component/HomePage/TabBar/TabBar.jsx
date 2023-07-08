@@ -1,10 +1,10 @@
 import React from "react"
-import s from "./TabBar.module.css"
 import { NavLink } from 'react-router-dom'
-import plusIcon from './img/plus.svg'
+import s from "./TabBar.module.css"
 import dotsIcon from './img/dots.svg'
+import plusIcon from './img/plus.svg'
 
-const TabBar = () => {
+const TabBar = ({ city }) => {
 	return (
 		<ul className={s.TabBar}>
 			<li>
@@ -13,7 +13,7 @@ const TabBar = () => {
 				</NavLink>
 			</li>
 			<li>
-				<h2 className={s.city}>Kyiv</h2>
+				<h2 className={s.city}>{city}</h2>
 			</li>
 			<li>
 				<div className={s.btn}>

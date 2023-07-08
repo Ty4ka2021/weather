@@ -1,10 +1,12 @@
 import React, { useState } from "react"
-import s from "./SearchPage.module.css"
-import Back from '../../component/Back/Back'
+import { useNavigate } from 'react-router'
 import { AsyncPaginate } from 'react-select-async-paginate'
 import { GEO_API_OPTIONS, GEO_API_URL } from '../../api'
+import Back from '../../component/Back/Back'
+import s from "./SearchPage.module.css"
 
 const SearchPage = ({ onSearchChange }) => {
+	const navigate = useNavigate()
 
 	const [search, setSearch] = useState(null)
 
@@ -12,6 +14,8 @@ const SearchPage = ({ onSearchChange }) => {
 		setSearch(searchData)
 		onSearchChange(searchData)
 	}
+
+
 
 	const loadOptions = (inputValue) => {
 		return fetch(`${GEO_API_URL}/cities?minPopulation=10000&namePrefix=${inputValue}`, GEO_API_OPTIONS)
@@ -39,6 +43,7 @@ const SearchPage = ({ onSearchChange }) => {
 				value={search}
 				onChange={handleOnChange}
 				loadOptions={loadOptions}
+				onClick={navigate('/')}
 			/>
 		</div>
 	)

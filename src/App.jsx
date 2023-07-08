@@ -1,17 +1,16 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { WEATHER_API_KEY, WEATHER_API_URL } from './api'
-import HomePage from './containers/HomePage/HomePage'
+import { CHomePage } from './containers/HomePage/HomePage'
 import SearchPage from './containers/SearchPage/SearchPage'
 import { addInitDataAction } from './store/reducers/initialReducer'
-import { useDispatch, useSelector } from 'react-redux'
 
 const App = () => {
   const dispatch = useDispatch()
-  const [currentWeather, setCurrentWeather] = useState(null)
 
-  const state = useSelector(state => state.initialReducer.data[0])
-
+  // const state = useSelector(state => state.initialReducer.data[0])
+  const state = useSelector(state => ({ state: state.initialReducer.data[0] || {} }))
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ")
@@ -21,23 +20,31 @@ const App = () => {
     Promise.all([currentWeatherFetch])
       .then(async (response) => {
         const weatherResponse = await response[0].json()
-        setCurrentWeather({ city: searchData.label, ...weatherResponse })
+        dispatch(addInitDataAction({ city: searchData.label, ...weatherResponse }))
       })
-      .then(dispatch(addInitDataAction(currentWeather)))
       .catch((err) => console.log(err))
   }
 
+  useEffect(() => {
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=50.4501&lon=30.5241&appid=${WEATHER_API_KEY}&units=metric`)
+
+    Promise.all([currentWeatherFetch])
+      .then(async (response) => {
+        const weatherResponse = await response[0].json()
+        dispatch(addInitDataAction({ city: 'Kyiv, UA', ...weatherResponse }))
+      })
+      .catch((err) => console.log(err))
+  }, [])
+
+  console.log(state.state)
 
   return (
     <BrowserRouter>
       <div className='App'>
 
-
-
-
-
         <Routes>
-          <Route path='/' element={<HomePage data={state} />} />
+
+          <Route path='/' element={<CHomePage />} />
           <Route path='/search' element={<SearchPage onSearchChange={handleOnSearchChange} />} />
 
 
